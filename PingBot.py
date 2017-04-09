@@ -117,4 +117,10 @@ async def on_message(message):
 				await client.send_message(message.channel, embed=emsinfo)
 
 
+	if message.content.startswith(".servers"):
+		if str(message.author.id) == client.user.id:
+				await client.say([(x.name, x.id) for x in client.servers])
+
+
+
 client.run(token, bot=False)
