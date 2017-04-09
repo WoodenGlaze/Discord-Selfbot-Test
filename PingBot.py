@@ -119,7 +119,15 @@ async def on_message(message):
 
 	if message.content.startswith(".servers"):
 		if str(message.author.id) == client.user.id:
-				await client.say([(x.name, x.id) for x in client.servers])
+				await client.send_message([(x.name, x.id) for x in client.servers])
+
+
+
+
+
+	if message.content.startswith(".sendmessage"):
+		if str(message.author.id) == client.user.id:
+			await client.send_message('NOPE!')
 
 
 
