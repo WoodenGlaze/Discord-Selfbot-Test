@@ -60,6 +60,39 @@ async def on_message(message):
 		deleted = await client.purge_from(message.channel, limit=100, check=is_me)
 		await client.send_message(message.channel, 'Deleted {} message(s)'.format(len(deleted)))
 
+
+	if message.content.startswith(".userinfo"):
+		if str(message.author.id) == client.user.id:
+				emuinfo = discord.Embed(title='User Info')
+
+
+
+				if member is None:
+				member = ctx.message.author
+
+
+				print('Member is: {}'.format(member))
+				print('{} called command!'.format(ctx.message.author))
+				print('{0.display_name} joined at {0.joined_at}, account was created at: {0.created_at}'.format(member))
+
+				emuinfo.set_author(name='{0.display_name}'.format(member), icon_url='{}'.format(member.avatar_url or member.default_avatar_url))
+				emuinfo.set_thumbnail(url='{0.avatar_url}'.format(member))
+				"""emuinfo.add_field(name='User:', value='{0.name}'.format(member))"""
+				emuinfo.add_field(name='User ID:', value='{0.id}'.format(member))
+
+
+
+				emuinfo.add_field(name='Highest Role:', value='{0.top_role}'.format(member))
+				emuinfo.add_field(name='Created at:', value='{0.created_at}'.format(member))
+				emuinfo.add_field(name='Joined at:', value='{0.joined_at}'.format(member))
+				emuinfo.add_field(name='Avatar URL', value='{0.avatar_url}'.format(member))
+
+				print('Userfield defined')
+				await client.send_message(message.channel, embed=emuinfo)
+				print('Posted Embed!')
+
+
+
 	if message.content.startswith(".serverinfo"):
 		if str(message.author.id) == client.user.id:
 				emsinfo = discord.Embed(title='Server Info')
