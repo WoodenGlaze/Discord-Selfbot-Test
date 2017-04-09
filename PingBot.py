@@ -1,3 +1,6 @@
+#This is my first attempt at making a self bot, don't judge haha.
+#Thanks Jake!
+
 import discord
 import asyncio
 import json
